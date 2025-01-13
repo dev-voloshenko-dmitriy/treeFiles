@@ -49,7 +49,10 @@ func Run() {
 		},
 		Action: func(c *cli.Context) error {
 
-			enumeratorStyle := lipgloss.NewStyle().Foreground(lipgloss.Color(c.String("colorLine"))).MarginRight(1)
+			enumeratorStyle := lipgloss.NewStyle().
+				Foreground(lipgloss.Color(c.String("colorLine"))).
+				MarginRight(1)
+
 			rootStyle := lipgloss.NewStyle().Foreground(lipgloss.Color(c.String("rootFontColor")))
 			itemStyle := lipgloss.NewStyle().Foreground(lipgloss.Color(c.String("itemFontColor")))
 
@@ -57,7 +60,7 @@ func Run() {
 
 			limitFiles := c.Int("limitFiles")
 
-			treeFiles, err := internal.GetTree(".", enclosure, limitFiles)
+			treeFiles, err := internal.GetTree(".", enclosure, limitFiles, c.String("search"))
 			if err != nil {
 				fmt.Println(err)
 			}

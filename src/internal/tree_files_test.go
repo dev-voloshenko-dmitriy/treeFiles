@@ -8,13 +8,13 @@ import (
 )
 
 func TestTreeFiles(t *testing.T) {
-	treeCli, err := GetTree(".", 2, 1)
+	treeCli, err := GetTree(".", 2, 1, "")
 	assert.NoError(t, err)
 	assert.IsType(t, &tree.Tree{}, treeCli)
 
-	treeCli, err = GetTree(".", 5, 1)
+	treeCli, err = GetTree(".", 5, 1, "")
 	assert.NoError(t, err)
 
-	treeCli, err = GetTree(".", 5, 20)
+	treeCli, err = GetTree(".", 5, 20, "")
 	assert.NoError(t, err)
 }
